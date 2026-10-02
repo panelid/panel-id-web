@@ -1,6 +1,8 @@
 name = "panel-id-web"
 main = "worker.js"
 compatibility_date = "2025-01-01"
+compatibility_flags = ["nodejs_compat"]
 
-[site]
-bucket = "./src"
+[assets]
+directory = "./src"
+binding = "ASSETS"
