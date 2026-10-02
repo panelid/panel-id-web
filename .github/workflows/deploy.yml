@@ -11,11 +11,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Deploy to Cloudflare Workers
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CF_API_TOKEN }}
-          accountId: ${{ secrets.CF_ACCOUNT_ID }}
+      - name: Install wrangler
+        run: npm install -g wrangler
+
+      - name: Deploy
+        run: wrangler deploy
         env:
           CLOUDFLARE_API_KEY: ${{ secrets.CF_GLOBAL_KEY }}
           CLOUDFLARE_EMAIL: ${{ secrets.CF_EMAIL }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
